@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Container, Card} from "react-bootstrap";
 
 class SingleBook extends Component {
     constructor(props) {
@@ -6,9 +7,18 @@ class SingleBook extends Component {
     }
     render() {
         return (
-            <div>
-
-            </div>
+            <Container className="d-flex justify-content-center">
+            <Card style={{ width: '25rem' }}>
+                <Card.Img variant="top" src={this.props.bookObject.img} />
+                <Card.Body>
+                    
+                    <Card.Text className="text-center">
+                    {this.props.bookObject.title}
+                    </Card.Text>
+                
+                </Card.Body>
+            </Card>
+            </Container>
         );
     }
 }
