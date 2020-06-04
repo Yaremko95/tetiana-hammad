@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {Container, Row, Col} from "react-bootstrap";
-import books from "./data/fantasy.json"
+import books from "../data/fantasy.json"
 import SingleBook from "./SingleBook"
+import FilterBookList from "./FilterBookList";
 
 class Booklist extends Component {
     constructor(props) {
@@ -9,22 +10,42 @@ class Booklist extends Component {
 
     }
     state = {
-        booklist: books
+        booklist: books,
+        filter: null
+    }
+
+    handelFilter = value =>{
+        this.setState({
+            filter: value
+        })
+
+
     }
     render() {
-        
-        return (
-            <Container className="d-flex justify-content-center">
-                <Row>
-            {this.state.booklist.map ((book, index)=> {
-                return (
-                    <Col>
-                    <SingleBook key={index} bookObject = {book}/>
-                    </Col>
-                    
-                )
 
-})} 
+        return (
+            <Container>
+                <FilterBookList handleSearch = {this.handelFilter} />
+                <Row className="row-cols-1 row-cols-md-3 row-cols-lg-5">
+                {  this.state.filter!=null?
+                    this.state.booklist.filter(book => book.title.toLowerCase().includes(this.state.filter)).map ((book, index)=> {
+                    return (
+                        <Col key={index}>
+                            <SingleBook  bookObject = {book}/>
+                        </Col>
+                    )
+
+                }):
+                    this.state.booklist.map((book, index)=> {
+                        return (
+                            <Col key={index}>
+                                <SingleBook index ={index} bookObject = {book}/>
+                            </Col>
+                        )
+                    }
+                    )
+                }
+
                 </Row>
             
             </Container>

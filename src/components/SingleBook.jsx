@@ -7,18 +7,17 @@ class SingleBook extends Component {
     }
     render() {
         return (
-            <Container className="d-flex justify-content-center">
-            <Card style={{ width: '25rem' }}>
-                <Card.Img variant="top" src={this.props.bookObject.img} />
+
+            <Card key={this.props.index} >
+                <Card.Img variant="top" src={this.props.bookObject.img}  style={{height:"15rem", objectFit:"cover"}}/>
                 <Card.Body>
-                    
                     <Card.Text className="text-center">
                     {this.props.bookObject.title}
                     </Card.Text>
                 
                 </Card.Body>
             </Card>
-            </Container>
+
         );
     }
 }
