@@ -5,11 +5,13 @@ import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import * as serviceWorker from './serviceWorker';
-import WarningSign from "./components/WarningSign";
+
+import App from "./App";
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <WarningSign text="This is a WorningSign component"/>
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
